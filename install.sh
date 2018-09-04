@@ -1,3 +1,5 @@
+### old
+
 #!/bin/bash
 
 # compiled from https://docs.docker.com/engine/installation/linux/debian/#/debian-jessie-80-64-bit
@@ -21,3 +23,18 @@ sudo group add docker
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 sudo service docker restart
+
+
+## new
+
+sudo apt update
+sudo apt upgrade
+sudo apt install apt-transport-https ca-certificates curl software-properties-common gnupg2
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install docker-ce
+sudo systemctl status docker
+docker -v
+sudo usermod -aG docker $USER # If you want to run Docker commands as a non-root user without prepending sudo you’ll need to add your user to the docker group which is created during the installation of the Docker CE package. You can do that by typing
+docker container run hello-world
