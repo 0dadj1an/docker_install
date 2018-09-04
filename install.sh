@@ -18,6 +18,10 @@ docker container run hello-world
 
 # jenkins how to
 
+
+
+sudo mkdir /var/jenkins_home
+sudo chown 1000:1000 /var/jenkins_home
 docker pull jenkins jenkins/jenkins:lts
 docker run -d -v /var/jenkins_home:/var/jenkins_home:z -p 8080:8080 -p 50000:50000 --name myjenkins jenkins/jenkins:lts
 docker update --restart=always 0576df221c0b
